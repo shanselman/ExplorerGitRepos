@@ -1,0 +1,3 @@
+# Local registry backups and manifests can contain private filesystem paths.
+PerFolderRoots-before-*.reg
+PerFolderRoots-added-*.clixml
