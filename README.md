@@ -18,6 +18,21 @@ This script finds the repositories directly inside a parent folder and registers
 
 Run as your normal Windows user. Administrator privileges are not required because these settings live under `HKEY_CURRENT_USER`. Registering folders does not install or enable the Windows feature on unsupported builds.
 
+### Install or update Windows Advanced Settings first
+
+The Windows Advanced Settings component is distributed through the Microsoft Store. Having the Advanced page in Settings does not necessarily mean you have the component update needed for File Explorer integration.
+
+1. Install or update [Windows Advanced Settings from the Microsoft Store](https://aka.ms/WindowsAdvancedSettings).
+2. Open **Settings > System > Advanced > File Explorer**. If Settings says **"Update the Advanced Settings component to get the latest features"**, select **Update Now** and let the Store finish.
+3. Reopen Settings and confirm **File Explorer + version control** is available. Restart Windows if needed after the update.
+4. Add one repository through **Choose folder** to confirm the integration works, then use this script for the rest.
+
+Barry Dorrans walks through the component update and the Explorer experience in [Enabling Source Control integration in Windows File Explorer](https://idunno.org/enabling-source-control-integration-in-windows-file-explorer/).
+
+If your organization blocks the Store, Microsoft's [upstream installation instructions](https://github.com/microsoft/WindowsAdvancedSettings#installing-and-running-windows-advanced-settings) also link to official release downloads. Follow organizational policies; a component update alone does not guarantee feature availability on every Windows build.
+
+**The script does not force Store updates or install software.** Keep installation and updates separate from registry registration so running it cannot unexpectedly update a Windows component. There is no hard-coded minimum package version check: this project has not established a reliable minimum version for the integration. Verify the actual Settings control instead of assuming a package version guarantees support.
+
 ## Usage
 
 Download or clone this repository, open PowerShell in its folder, and preview what would be added:
@@ -124,6 +139,8 @@ Failures stop the script but do not automatically roll back entries already writ
 
 ## Further reading
 
+- [Barry Dorrans: Enabling Source Control integration in Windows File Explorer](https://idunno.org/enabling-source-control-integration-in-windows-file-explorer/)
+- [Windows Advanced Settings in the Microsoft Store](https://aka.ms/WindowsAdvancedSettings)
 - [Microsoft Learn: File Explorer Version Control Integration](https://learn.microsoft.com/en-us/windows/advanced-settings/fe-version-control)
 - [Microsoft's Windows Advanced Settings project](https://github.com/microsoft/windowsAdvancedSettings)
 - [ElevenForum: Add or remove repository folders](https://www.elevenforum.com/t/add-or-remove-repository-folders-for-file-explorer-version-control-in-windows-11.38851/)
